@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+{%block content%}
+<form method='POST' class="col s12">
+    {% csrf_token %}
+    <div class="row">
+        <div class="input-field">
+            <label for="icon_prefix">Materia</label>
+            <input id="icon_prefix" type="text" class="validate" name="materia">
+        </div>
+        <div class="input-field">
+            <label for="icon_telephone">Serie</label>
+            <input id="icon_telephone" class="validate" type="text" name="serie">
+        </div>
+        <input type="hidden"  name="profesor" value="{{user.profile.name}}">
+        <input type="submit" value="Add" id= "Add" >
+    </div>
+</form>
+{%endblock%}
