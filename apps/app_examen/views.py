@@ -55,14 +55,33 @@ class pregunta(CreateView):
     fields = ['pregunta','dificultad','valor']
     success_url = reverse_lazy('index_view')
 
-######################################################3
+#######################################################
 #Borar
 class prueva(FormView):
     template_name = 'app_examen/p.html'
     form_class = Preguntas_form
-    success_url = reverse_lazy('index_view')
+    success_url = reverse_lazy('prueva2')
     def form_valid(self, form):
         p = Preguntas()
+        p.pregunta = form.cleaned_data['pregunta']
+        p.dificultad = form.cleaned_data['dificultad']
+        p.valor = form.cleaned_data['valor']
+        p.save()
+        return super(prueva,self).form_valid(form)
+
+class prueva2(FormView):
+    template_name = 'app_examen/p2.html'
+    form_class = respuestas_form
+    success_url = reverse_lazy('index_view')
+    def form_valid(self, form):
+        p = Respuesta()
+        p.opcion  = form.cleaned_data['opcion']
+        p.corecta = form.cleaned_data['corecta']
+        p.pregun = form.cleaned_data['pregun']
+        p.save()
+        return super(prueva2,self).form_valid(form)
+
+
 
 #def prueva(request):
 #    form = Preguntas_form(request.POST)

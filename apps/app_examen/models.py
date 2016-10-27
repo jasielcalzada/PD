@@ -44,7 +44,7 @@ class Preguntas(models.Model):
     dificultad = models.CharField(max_length=64,choices=nivel)
     valor = models.PositiveIntegerField( validators=[MinValueValidator(1),MaxValueValidator(5)])
     def __unicode__(self):
-        return '%s %s %d'%(self.pregunta,self.dificultad,self.valor)
+        return '%s'%(self.pregunta)
 
 class Respuesta(models.Model):
     opcion = models.CharField(max_length=200,blank=True)
@@ -52,7 +52,7 @@ class Respuesta(models.Model):
     pregun = models.ForeignKey(Preguntas,null=True)
 
     def __unicode__(self):
-        return '%s %s %s'%(self.opcion,self.corecta,self.pregun)
+        return '%s %s %s'%(self.opcion,self.corecta,self.pregun.pregunta)
 class Examen(models.Model):
     materia = models.ForeignKey(Materia,null=True)
     profesor = models.ForeignKey(Profesor,null=True)
@@ -60,9 +60,6 @@ class Examen(models.Model):
     unidad = models.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(7)],null=True)
     pregun = models.ForeignKey(Preguntas)
     respue = models.ForeignKey(Respuesta)
-
-
-
     def __unicode__(self):
         return '%s %s %s %d %s %s'%(self.materia,self.profesor.name,self.alumno.name,self.unidad,self.pregun,self.respue)
 
