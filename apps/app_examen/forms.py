@@ -14,21 +14,24 @@ class UserFormAlumno(UserCreationForm):
     n_control = forms.CharField(max_length=64)
 
 #Coregir
-class respuestas_form(forms.Form):
-    opcion = forms.CharField(max_length=64)
-    corecta = forms.CharField(max_length=64)
-    pregun = forms.CharField(max_length=64)
-    #class Meta:
-    #   model = Respuesta
-    #    fields = ('opcion', 'corecta', 'pregun')
-
 class Preguntas_form(forms.Form):
     pregunta = forms.CharField(max_length=64)
     #nivel = (('Facil','Facil'),('Intermedio','Intermedio'),('Dificil','Dificil'))
     dificultad = forms.CharField()
     valor = forms.IntegerField()
-    #class Meta:
-    #   model = Preguntas
-    #   fields = ('pregunta', 'dificultad', 'valor')
+
+class respuestas_form(forms.Form):
+    opcion = forms.CharField(max_length=64)
+    corecta = forms.CharField(max_length=64)
+    pregun = forms.CharField(max_length=64)
+    #pregun = forms.ChoiceField()#queryset=Preguntas.objects.filter(id = id))
+
+
+
+
+
+
+
+
 
 

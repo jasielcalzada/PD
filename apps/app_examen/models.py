@@ -49,10 +49,11 @@ class Preguntas(models.Model):
 class Respuesta(models.Model):
     opcion = models.CharField(max_length=200,blank=True)
     corecta = models.CharField(max_length=200,blank=True)
-    pregun = models.ForeignKey(Preguntas,null=True)
+    pregun = models.ForeignKey(Preguntas,null=True, blank=True, default=None)
 
     def __unicode__(self):
         return '%s %s %s'%(self.opcion,self.corecta,self.pregun.pregunta)
+
 class Examen(models.Model):
     materia = models.ForeignKey(Materia,null=True)
     profesor = models.ForeignKey(Profesor,null=True)

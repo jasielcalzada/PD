@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^add_materia/$',register_materia.as_view(),name='add_materia'),
     url(r'^signup_a/$',Signup_Alumno.as_view(),name='signup_a'),
     url(r'^register_preguntas',pregunta.as_view(),name='register_preguntas'),
-    url(r'^prueva/$',prueva.as_view(),name='prueva'),
-    url(r'^prueva2/$',prueva2.as_view(),name='prueva2'),
+    url(r'^register_respuesta',respuesta.as_view(),name='register_respuesta'),
+    #url(r'^prueva/$',prueva.as_view(),name='prueva'),
+    #url(r'^prueva2/$',prueva2.as_view(),name='prueva2'),
 ]
